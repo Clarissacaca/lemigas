@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siaran Pers - LEMIGAS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- STICKY HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="topbar">
+    <div class="brand">
+  <img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img">
+</div>
+    <div class="search-box">
+      <input type="text" placeholder="Cari...">
+      <button aria-label="Cari" onclick="handleSearch()">&#128269;</button>
+    </div>
+    </div>
+    <div class="nav-row nav-row-solid">
+      <nav class="nav-pill">
+      <a href="index.html">BERANDA</a>
+      <div class="has-dropdown" id="dd-tentang">
+        <a onclick="toggleDropdown('dd-tentang')">TENTANG KAMI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="tentang-kami.html#sejarah">Sejarah</a>
+          <a href="tentang-kami.html#visimisi">Visi Misi</a>
+          <a href="tentang-kami.html#struktur">Struktur Organisasi</a>
+          <a href="tentang-kami.html#inovasi">Inovasi</a>
+        </div>
+      </div>
+              <a href="layanan.html">LAYANAN</a>
+      <div class="has-dropdown" id="dd-publikasi">
+        <a onclick="toggleDropdown('dd-publikasi')" class="active">PUBLIKASI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="publikasi-pengumuman.html">Pengumuman</a>
+          <a href="publikasi-siaran-pers.html">Siaran Pers</a>
+          <a href="publikasi-jurnal-ilmiah.html">Jurnal Ilmiah</a>
+          <div class="has-submenu" id="sm-dokstrat">
+            <a onclick="toggleSubmenu(event,'sm-dokstrat')">Dokumen Strategis <span class="submenu-caret">&#8250;</span></a>
+            <div class="submenu">
+              <a href="publikasi-dokumen-strategis.html#rba">Rencana Bisnis &amp; Anggaran</a>
+              <a href="publikasi-dokumen-strategis.html#renstra">Rencana Strategis</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kinerja">Laporan Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#perjanjian-kinerja">Perjanjian Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kegiatan">Laporan Kegiatan</a>
+            </div>
+          </div>
+          <a href="publikasi-digital-library.html">Digital Library</a>
+          <a href="publikasi-galeri.html">Galeri</a>
+          <a href="publikasi-daftar-informasi-publik.html">Daftar Informasi Publik</a>
+        </div>
+      </div>
+      <a href="kontak.html">KONTAK</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="publikasi.html">Publikasi</a><span>/</span>Siaran Pers</div>
+  <section>
+    <div class="detail-wrap" style="max-width:980px;">
+      <h1>Siaran Pers</h1>
+      <p class="lead">Berita dan siaran pers terbaru seputar kegiatan dan capaian LEMIGAS.</p>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div>
+            <div class="pub-title">LEMIGAS Dorong Penguatan Monitoring dan Integritas Lokasi Penyimpanan CCS</div>
+            <div class="pub-excerpt">LEMIGAS berpartisipasi dalam forum internasional membahas monitoring penyimpanan karbon.</div>
+          </div>
+          <div class="pub-date">26 Agustus 2026</div>
+        </div>
+        <div class="pub-item">
+          <div>
+            <div class="pub-title">LEMIGAS dan PPSDM Migas Perkuat Sinergi Pengujian dan Pengembangan SDM</div>
+            <div class="pub-excerpt">Kerja sama pengujian dan pengembangan sumber daya manusia di sektor migas.</div>
+          </div>
+          <div class="pub-date">19 Agustus 2026</div>
+        </div>
+        <div class="pub-item">
+          <div>
+            <div class="pub-title">Semarak Rangkaian Upacara HUT Ke-81 RI di LEMIGAS</div>
+            <div class="pub-excerpt">Rangkaian kegiatan peringatan Hari Kemerdekaan di lingkungan LEMIGAS dan Ditjen Migas.</div>
+          </div>
+          <div class="pub-date">17 Agustus 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Balai Besar Pengujian Minyak dan Gas Bumi LEMIGAS</h4>
+        <p><strong>Alamat:</strong><br>Area Perkantoran LEMIGAS, Jl. Ciledug Raya Kav. 109, Cipulir, Kebayoran Lama, Jakarta Selatan 12230</p>
+        <p><strong>Telepon:</strong> +62 21 7394422 / 7393958</p>
+        <p><strong>Email:</strong> info.lemigas@esdm.go.id</p>
+      </div>
+      <div>
+        <h4>Tautan Lainnya</h4>
+        <ul>
+          <li><a href="#">Informasi Publik</a></li>
+          <li><a href="#">Rencana Strategis</a></li>
+          <li><a href="#">Laporan Kinerja</a></li>
+          <li><a href="#">Perjanjian Kinerja</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website Terkait</h4>
+        <ul>
+          <li><a href="#">Website ESDM</a></li>
+          <li><a href="#">Website Ditjen Migas</a></li>
+          <li><a href="#">Perpustakaan LEMIGAS</a></li>
+          <li><a href="#">Jurnal Online LEMIGAS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pelayanan Publik</h4>
+        <ul>
+          <li><a href="#">LAPOR</a></li>
+          <li><a href="#">Gratifikasi Online</a></li>
+          <li><a href="#">Whistle Blowing System</a></li>
+          <li><a href="#">Survey Kepuasan Pelanggan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 LEMIGAS. All Rights Reserved</span>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

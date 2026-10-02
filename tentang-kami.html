@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang Kami - LEMIGAS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="topbar">
+    <div class="brand">
+  <img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img">
+</div>
+    <div class="search-box">
+      <input type="text" placeholder="Cari...">
+      <button aria-label="Cari" onclick="handleSearch()">&#128269;</button>
+    </div>
+    </div>
+    <div class="nav-row nav-row-solid">
+      <nav class="nav-pill">
+      <a href="index.html">BERANDA</a>
+      <div class="has-dropdown" id="dd-tentang">
+        <a onclick="toggleDropdown('dd-tentang')" class="active">TENTANG KAMI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="#sejarah">Sejarah</a>
+          <a href="#visimisi">Visi Misi</a>
+          <a href="#struktur">Struktur Organisasi</a>
+          <a href="#inovasi">Inovasi</a>
+        </div>
+      </div>
+              <a href="layanan.html">LAYANAN</a>
+      <div class="has-dropdown" id="dd-publikasi">
+        <a onclick="toggleDropdown('dd-publikasi')">PUBLIKASI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="publikasi-pengumuman.html">Pengumuman</a>
+          <a href="publikasi-siaran-pers.html">Siaran Pers</a>
+          <a href="publikasi-jurnal-ilmiah.html">Jurnal Ilmiah</a>
+          <div class="has-submenu" id="sm-dokstrat">
+            <a onclick="toggleSubmenu(event,'sm-dokstrat')">Dokumen Strategis <span class="submenu-caret">&#8250;</span></a>
+            <div class="submenu">
+              <a href="publikasi-dokumen-strategis.html#rba">Rencana Bisnis &amp; Anggaran</a>
+              <a href="publikasi-dokumen-strategis.html#renstra">Rencana Strategis</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kinerja">Laporan Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#perjanjian-kinerja">Perjanjian Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kegiatan">Laporan Kegiatan</a>
+            </div>
+          </div>
+          <a href="publikasi-digital-library.html">Digital Library</a>
+          <a href="publikasi-galeri.html">Galeri</a>
+          <a href="publikasi-daftar-informasi-publik.html">Daftar Informasi Publik</a>
+        </div>
+      </div>
+      <a href="kontak.html">KONTAK</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Tentang Kami</h1>
+    <p>Mengenal lebih dekat LEMIGAS — sejarah, visi misi, struktur organisasi, dan inovasi kami.</p>
+  </div>
+
+  <!-- SEJARAH -->
+  <section id="sejarah">
+    <div class="about-section">
+      <div class="eyebrow-title">
+        <h2>Sejarah</h2>
+        <p>Perjalanan panjang LEMIGAS dalam mendukung sektor minyak dan gas bumi Indonesia.</p>
+      </div>
+      <p class="sejarah-text">
+        LEMIGAS berdiri sejak pertengahan tahun 1960-an sebagai lembaga pengujian milik pemerintah di bidang teknologi minyak dan gas bumi.
+        Sejak awal berdirinya, LEMIGAS berperan besar dalam penelitian, pengembangan, dan pendidikan bagi para pemangku kepentingan migas di Indonesia.
+        Didukung pengalaman panjang, tenaga ahli tersertifikasi, dan puluhan laboratorium beserta fasilitas kalibrasi, LEMIGAS terus memperluas cakupan layanannya —
+        mulai dari analisis laboratorium, konsultasi, sertifikasi, survei lapangan, hingga jasa pengujian komersial lainnya.
+        Di pertengahan dekade 2010-an, LEMIGAS resmi menyandang status Badan Layanan Umum (BLU) secara penuh, sehingga dapat memberikan layanan
+        dengan fleksibilitas yang lebih baik, baik melalui tender maupun secara swakelola, tanpa meninggalkan fungsinya sebagai unit di bawah Kementerian ESDM.
+      </p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="year">Dekade 1960-an</div>
+          <p>Cikal bakal LEMIGAS didirikan sebagai lembaga penelitian dan pengujian minyak & gas bumi milik pemerintah.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2000-an</div>
+          <p>Perluasan fasilitas laboratorium dan penguatan kompetensi tenaga ahli di berbagai bidang migas.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2015</div>
+          <p>LEMIGAS resmi berstatus Badan Layanan Umum (BLU) secara penuh, memperluas fleksibilitas layanan kepada klien.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">Saat ini</div>
+          <p>LEMIGAS terus bertransformasi mendukung transisi energi dan penguatan sektor migas nasional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISI MISI -->
+  <section id="visimisi" style="background:var(--bg-grey);">
+    <div class="about-section">
+      <div class="eyebrow-title">
+        <h2>Visi &amp; Misi</h2>
+        <p>Arah dan tujuan LEMIGAS dalam menjalankan tugas dan fungsinya.</p>
+      </div>
+      <div class="visi-box">
+        <h3>VISI</h3>
+        <p>Menjadi lembaga pengujian minyak dan gas bumi terdepan yang mendukung penguatan sektor migas nasional secara berkelanjutan.</p>
+      </div>
+      <ul class="misi-list">
+        <li><span class="num-badge">1</span> Meningkatkan kualitas jasa pengujian untuk memberikan nilai tambah bagi klien LEMIGAS.</li>
+        <li><span class="num-badge">2</span> Menciptakan produk unggulan dan mengembangkan produk andalan di bidang migas.</li>
+        <li><span class="num-badge">3</span> Mendukung penguatan riset dan inovasi teknologi minyak dan gas bumi.</li>
+        <li><span class="num-badge">4</span> Memberikan pelayanan yang transparan, cepat, dan sesuai standar mutu internasional.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STRUKTUR ORGANISASI -->
+  <section id="struktur">
+    <div class="about-section">
+      <div class="eyebrow-title">
+        <h2>Struktur Organisasi</h2>
+        <p>Susunan unit kerja utama di lingkungan LEMIGAS.</p>
+      </div>
+      <div class="struktur-chart">
+        <div class="org-box">Kepala Balai Besar LEMIGAS</div>
+        <div class="org-connector"></div>
+        <div class="org-row">
+          <div class="org-box">Bagian Tata Usaha</div>
+          <div class="org-box">Bidang Program</div>
+          <div class="org-box">Bidang Sarana &amp; Pengujian</div>
+          <div class="org-box">Bidang Afiliasi &amp; Informasi</div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-row">
+          <div class="org-box">Kelompok Pengujian Eksplorasi</div>
+          <div class="org-box">Kelompok Pengujian Eksploitasi</div>
+          <div class="org-box">Kelompok Proses &amp; Aplikasi</div>
+          <div class="org-box">Kelompok Kalibrasi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INOVASI -->
+  <section id="inovasi" style="background:var(--bg-grey);">
+    <div class="about-section">
+      <div class="eyebrow-title">
+        <h2>Inovasi</h2>
+        <p>Berbagai inisiatif dan pengembangan teknologi yang terus didorong LEMIGAS.</p>
+      </div>
+      <div class="inovasi-grid">
+        <div class="card">
+          <div class="icon-circle">&#128300;</div>
+          <h3>Riset & Pengembangan</h3>
+          <p>Pengembangan metode pengujian dan teknologi baru di bidang minyak dan gas bumi.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">&#128187;</div>
+          <h3>Digitalisasi Layanan</h3>
+          <p>Modernisasi sistem layanan agar proses pengujian dan administrasi lebih cepat dan transparan.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">&#127807;</div>
+          <h3>Transisi Energi</h3>
+          <p>Mendukung riset energi bersih dan teknologi ramah lingkungan di sektor migas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Balai Besar Pengujian Minyak dan Gas Bumi LEMIGAS</h4>
+        <p><strong>Alamat:</strong><br>Area Perkantoran LEMIGAS, Jl. Ciledug Raya Kav. 109, Cipulir, Kebayoran Lama, Jakarta Selatan 12230</p>
+        <p><strong>Telepon:</strong> +62 21 7394422 / 7393958</p>
+        <p><strong>Email:</strong> info.lemigas@esdm.go.id</p>
+      </div>
+      <div>
+        <h4>Tautan Lainnya</h4>
+        <ul>
+          <li><a href="#">Informasi Publik</a></li>
+          <li><a href="#">Rencana Strategis</a></li>
+          <li><a href="#">Laporan Kinerja</a></li>
+          <li><a href="#">Perjanjian Kinerja</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website Terkait</h4>
+        <ul>
+          <li><a href="#">Website ESDM</a></li>
+          <li><a href="#">Website Ditjen Migas</a></li>
+          <li><a href="#">Perpustakaan LEMIGAS</a></li>
+          <li><a href="#">Jurnal Online LEMIGAS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pelayanan Publik</h4>
+        <ul>
+          <li><a href="#">LAPOR</a></li>
+          <li><a href="#">Gratifikasi Online</a></li>
+          <li><a href="#">Whistle Blowing System</a></li>
+          <li><a href="#">Survey Kepuasan Pelanggan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 LEMIGAS. All Rights Reserved</span>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

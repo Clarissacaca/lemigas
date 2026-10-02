@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eksplorasi Migas - LEMIGAS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- STICKY HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="topbar">
+  <div class="brand">
+  <img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img">
+</div>
+    <div class="search-box">
+      <input type="text" placeholder="Cari...">
+      <button aria-label="Cari" onclick="handleSearch()">&#128269;</button>
+    </div>
+    </div>
+    <div class="nav-row nav-row-solid">
+      <nav class="nav-pill">
+      <a href="index.html">BERANDA</a>
+      <div class="has-dropdown" id="dd-tentang">
+        <a onclick="toggleDropdown('dd-tentang')">TENTANG KAMI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="tentang-kami.html#sejarah">Sejarah</a>
+          <a href="tentang-kami.html#visimisi">Visi Misi</a>
+          <a href="tentang-kami.html#struktur">Struktur Organisasi</a>
+          <a href="tentang-kami.html#inovasi">Inovasi</a>
+        </div>
+      </div>
+              <a href="layanan.html" class="active">LAYANAN</a>
+      <div class="has-dropdown" id="dd-publikasi">
+        <a onclick="toggleDropdown('dd-publikasi')">PUBLIKASI <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="publikasi-pengumuman.html">Pengumuman</a>
+          <a href="publikasi-siaran-pers.html">Siaran Pers</a>
+          <a href="publikasi-jurnal-ilmiah.html">Jurnal Ilmiah</a>
+          <div class="has-submenu" id="sm-dokstrat">
+            <a onclick="toggleSubmenu(event,'sm-dokstrat')">Dokumen Strategis <span class="submenu-caret">&#8250;</span></a>
+            <div class="submenu">
+              <a href="publikasi-dokumen-strategis.html#rba">Rencana Bisnis &amp; Anggaran</a>
+              <a href="publikasi-dokumen-strategis.html#renstra">Rencana Strategis</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kinerja">Laporan Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#perjanjian-kinerja">Perjanjian Kinerja</a>
+              <a href="publikasi-dokumen-strategis.html#laporan-kegiatan">Laporan Kegiatan</a>
+            </div>
+          </div>
+          <a href="publikasi-digital-library.html">Digital Library</a>
+          <a href="publikasi-galeri.html">Galeri</a>
+          <a href="publikasi-daftar-informasi-publik.html">Daftar Informasi Publik</a>
+        </div>
+      </div>
+      <a href="kontak.html">KONTAK</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="layanan.html">Layanan</a><span>/</span>Eksplorasi Migas</div>
+  <section>
+    <div class="detail-wrap">
+
+      <div class="detail-hero-photos">
+        <div class="photo"></div>
+        <div class="photo center">
+          <div class="detail-hero-title-overlay">
+            <h1>Eksplorasi Migas</h1>
+          </div>
+        </div>
+        <div class="photo"></div>
+      </div>
+
+      <div class="detail-columns">
+        <div>
+         <p class="lead">Mendukung penemuan cadangan minyak dan gas bumi baru, baik secara konvensional maupun non-konvensional.</p>
+        </div>
+        <div class="detail-sidebar">
+          <h4>Profil Divisi Eksplorasi Migas</h4>
+          <div class="sidebar-contact-row"><span>&#128100;</span> Kontak Bisnis: Nama PIC</div>
+          <div class="sidebar-contact-row"><span>&#128222;</span> 0812-0000-0000</div>
+          <div class="sidebar-contact-row"><span>&#9993;&#65039;</span> eksplorasi@esdm.go.id</div>
+        </div>
+      </div>
+
+      
+
+      <div class="related-accordion">
+        <h3>Layanan Lainnya</h3>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#9880;</span><span class="ah-label">Eksploitasi Migas</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Meningkatkan produksi migas secara konvensional maupun non-konvensional.</p>
+            <a href="layanan-eksploitasi.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128667;</span><span class="ah-label">Pengolahan Minyak</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Menjaga kualitas minyak bumi dan produk turunannya.</p>
+            <a href="layanan-proses.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128293;</span><span class="ah-label">Pengolahan Gas</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Infrastruktur produksi dan pemanfaatan gas bumi.</p>
+            <a href="layanan-teknogas.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#9981;</span><span class="ah-label">Aplikasi Produk Migas</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Pengujian bahan bakar, biofuel, dan teknologi lingkungan.</p>
+            <a href="layanan-aplikasi.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128202;</span><span class="ah-label">Tekno Ekonomi</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Kajian kelayakan teknis dan ekonomi proyek migas.</p>
+            <a href="layanan-tepb.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#9878;&#65039;</span><span class="ah-label">Kalibrasi</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Kalibrasi dan perawatan peralatan laboratorium.</p>
+            <a href="layanan-kalibrasi.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#129514;</span><span class="ah-label">Uji Profisiensi</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Uji banding antar laboratorium.</p>
+            <a href="layanan-uji-profisiensi.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128220;</span><span class="ah-label">LSPRO</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Sertifikasi produk sesuai standar nasional.</p>
+            <a href="layanan-lspro.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128221;</span><span class="ah-label">Layanan Lain-Lain</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Penggunaan lahan, percetakan, promosi, dan blending.</p>
+            <a href="layanan-lainnya.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
+<div class="detail-cta">
+        <p>Tertarik menggunakan layanan Eksplorasi Migas?</p>
+        <a href="kontak.html" class="btn btn-secondary">Ajukan Layanan Ini</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Balai Besar Pengujian Minyak dan Gas Bumi LEMIGAS</h4>
+        <p><strong>Alamat:</strong><br>Area Perkantoran LEMIGAS, Jl. Ciledug Raya Kav. 109, Cipulir, Kebayoran Lama, Jakarta Selatan 12230</p>
+        <p><strong>Telepon:</strong> +62 21 7394422 / 7393958</p>
+        <p><strong>Email:</strong> info.lemigas@esdm.go.id</p>
+      </div>
+      <div>
+        <h4>Tautan Lainnya</h4>
+        <ul>
+          <li><a href="#">Informasi Publik</a></li>
+          <li><a href="#">Rencana Strategis</a></li>
+          <li><a href="#">Laporan Kinerja</a></li>
+          <li><a href="#">Perjanjian Kinerja</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Website Terkait</h4>
+        <ul>
+          <li><a href="#">Website ESDM</a></li>
+          <li><a href="#">Website Ditjen Migas</a></li>
+          <li><a href="#">Perpustakaan LEMIGAS</a></li>
+          <li><a href="#">Jurnal Online LEMIGAS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pelayanan Publik</h4>
+        <ul>
+          <li><a href="#">LAPOR</a></li>
+          <li><a href="#">Gratifikasi Online</a></li>
+          <li><a href="#">Whistle Blowing System</a></li>
+          <li><a href="#">Survey Kepuasan Pelanggan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 LEMIGAS. All Rights Reserved</span>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
