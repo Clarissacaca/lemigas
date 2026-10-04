@@ -81,11 +81,11 @@ section { padding: 70px 8%; }
   .search-box button { width: 34px; height: 34px; }
   /* saat dibuka: kolom navy memanjang, ikon di kanan */
   .search-box.expanded {
-    position: absolute; left: auto; right: 16px; top: 9px; width: 55%;  max-width: 260px; height: 34px;
+    position: absolute; left: auto; right: 16px; top: 9px; width: calc(100% - 200px);  max-width: 240px; min-width: 140px; height: 34px;
     border-radius: 24px; padding: 0 2px 0 14px; justify-content: flex-start; z-index: 50;
   }
-  .search-box.expanded input { display: block; font-size: 12.5px;}
-  .search-results { left: auto; right: 0; width: 260px;  max-width: calc(100vw - 32px);  }
+  .search-box.expanded input { display: block; font-size: 14px; min-width: 0;}
+  .search-results { left: auto; right: 0; width: 240px;  max-width: calc(100vw - 32px);  }
 }
 
 /* ===== HERO ===== */
