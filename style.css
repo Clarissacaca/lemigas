@@ -36,7 +36,7 @@ section { padding: 70px 8%; }
 .brand .brand-text .esdm { font-size: 15px; font-weight: 800; color: #111; }
 .brand-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--navy-dark); color: var(--yellow); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; }
 .brand .lemigas-name { font-size: 26px; font-weight: 800; color: var(--navy); letter-spacing: 1px; margin-left: 6px; }
-.brand-logo-img { height: 48px; }
+.brand-logo-img { height: 40px; }
 
 /* ===== SEARCH BAR ===== */
 .search-box {
@@ -448,11 +448,11 @@ footer { background: #101a3d; color: #c8cbe0; padding: 60px 8% 20px; }
   .has-dropdown.open .dropdown, .has-submenu.open .submenu { display: block; }
 
   .hero-content h1 { font-size: 22px; }
-  .hero-buttons { flex-direction: row; gap: 10px; width: auto; }
+  .hero-buttons { flex-direction: row; gap: 12px; width: auto; }
   .stat { min-width: 45%; padding: 16px 10px; }
   .stat .num { font-size: 20px; }
   .stat .label { font-size: 11px; }
-  .btn { padding: 7px 14px; font-size: 10px; text-align: center; }
+  .btn { padding: 10px 17px; font-size: 13px; text-align: center; }
   .layanan-grid, .berita-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   section { padding: 40px 6%; }
