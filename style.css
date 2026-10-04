@@ -36,7 +36,7 @@ section { padding: 70px 8%; }
 .brand .brand-text .esdm { font-size: 15px; font-weight: 800; color: #111; }
 .brand-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--navy-dark); color: var(--yellow); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; }
 .brand .lemigas-name { font-size: 26px; font-weight: 800; color: var(--navy); letter-spacing: 1px; margin-left: 6px; }
-.brand-logo-img { height: 42px; }
+.brand-logo-img { height: 48px; }
 
 /* ===== SEARCH BAR ===== */
 .search-box {
@@ -73,20 +73,6 @@ section { padding: 70px 8%; }
 .search-results a small { display: block; font-weight: 400; color: var(--text-grey); font-size: 12px; }
 .search-results a:hover, .search-results a.focus { background: var(--bg-grey); }
 .search-results .no-result { padding: 12px 18px; font-size: 13px; color: var(--text-grey); }
-
-@media (max-width: 900px) {
-  /* mobile: lingkaran navy berisi ikon putih */
-  .search-box { width: 34px; height: 34px; padding: 0; justify-content: center; border-radius: 50%; }
-  .search-box input { display: none; }
-  .search-box button { width: 34px; height: 34px; }
-  /* saat dibuka: kolom navy memanjang, ikon di kanan */
-  .search-box.expanded {
-    position: absolute; left: auto; right: 16px; top: 9px; width: calc(100% - 200px);  max-width: 240px; min-width: 140px; height: 34px;
-    border-radius: 24px; padding: 0 2px 0 14px; justify-content: flex-start; z-index: 50;
-  }
-  .search-box.expanded input { display: block; font-size: 14px; min-width: 0;}
-  .search-results { left: auto; right: 0; width: 240px;  max-width: calc(100vw - 32px);  }
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -413,13 +399,29 @@ footer { background: #101a3d; color: #c8cbe0; padding: 60px 8% 20px; }
   .intro-split { grid-template-columns: 1fr; gap: 24px; }
   .intro-text h2 { font-size: 24px; }
 
-  /* --- Topbar --- */
-  .topbar { padding: 10px 16px; gap: 10px; }
-  .brand-logo-img { height: 30px; }
+  /* --- Topbar (header putih): lebih tinggi, logo lebih besar --- */
+  .topbar { padding: 16px 16px; gap: 10px; }
+  .brand-logo-img { height: 44px; }
   .brand-icon { width: 32px; height: 32px; font-size: 9px; }
   .brand .brand-text .kementerian { font-size: 8px; }
   .brand .brand-text .esdm { font-size: 11px; }
   .brand .lemigas-name { font-size: 18px; }
+
+  /* --- Search: tertutup = lingkaran navy berisi ikon --- */
+  .search-box { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 50%; }
+  .search-box input { display: none; }
+  .search-box button { width: 40px; height: 40px; }
+
+  /* --- Search: terbuka = memanjang di header, logo disembunyikan sementara --- */
+  .search-box.expanded {
+    position: absolute; left: 16px; right: 16px; top: 18px;
+    width: auto; max-width: none; min-width: 0; height: 40px;
+    border-radius: 24px; padding: 0 3px 0 16px;
+    justify-content: flex-start; z-index: 50;
+  }
+  .search-box.expanded input { display: block; font-size: 14px; min-width: 0; }
+  .topbar:has(.search-box.expanded) .brand { visibility: hidden; }
+  .search-results { left: 0; right: 0; width: auto; max-width: none; }
 
   /* --- Navbar: pill jadi menu hamburger --- */
   .nav-row { justify-content: flex-end; padding: 10px 16px; }
@@ -475,7 +477,7 @@ footer { background: #101a3d; color: #c8cbe0; padding: 60px 8% 20px; }
    OVERRIDE (sengaja di paling bawah supaya menang)
    ===================================================== */
 
-/* --- Dropdown DESKTOP saja: lega, kapital, jarak kiri nyaman --- */
+/* --- Dropdown DESKTOP saja --- */
 @media (min-width: 901px) {
   .nav-pill .has-dropdown .dropdown { min-width: 240px; padding: 10px 0; border-radius: 12px; top: 120%; }
   .nav-pill .has-dropdown .dropdown a,
