@@ -3,61 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eksplorasi Migas - LEMIGAS</title>
+<title>Kalibrasi - LEMIGAS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- STICKY HEADER -->
   <header class="site-header" id="site-header">
     <div class="topbar">
-  <div class="brand">
-  <img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img">
-</div>
-    <div class="search-box">
-      <input type="text" placeholder="Cari...">
-      <button aria-label="Cari" onclick="handleSearch()">&#128269;</button>
-    </div>
+      <div class="brand">
+        <a href="index.html"><img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img"></a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Cari..." autocomplete="off">
+        <button type="button" aria-label="Cari">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="nav-row nav-row-solid">
+      <button class="nav-toggle-btn" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+      <div class="nav-overlay" onclick="toggleMobileNav()"></div>
       <nav class="nav-pill">
-      <a href="index.html">BERANDA</a>
-      <div class="has-dropdown" id="dd-tentang">
-        <a onclick="toggleDropdown('dd-tentang')">TENTANG KAMI <span class="caret">&#9662;</span></a>
-        <div class="dropdown">
-          <a href="tentang-kami.html#sejarah">Sejarah</a>
-          <a href="tentang-kami.html#visimisi">Visi Misi</a>
-          <a href="tentang-kami.html#struktur">Struktur Organisasi</a>
-          <a href="tentang-kami.html#inovasi">Inovasi</a>
-        </div>
-      </div>
-              <a href="layanan.html" class="active">LAYANAN</a>
-      <div class="has-dropdown" id="dd-publikasi">
-        <a onclick="toggleDropdown('dd-publikasi')">PUBLIKASI <span class="caret">&#9662;</span></a>
-        <div class="dropdown">
-          <a href="publikasi-pengumuman.html">Pengumuman</a>
-          <a href="publikasi-siaran-pers.html">Siaran Pers</a>
-          <a href="publikasi-jurnal-ilmiah.html">Jurnal Ilmiah</a>
-          <div class="has-submenu" id="sm-dokstrat">
-            <a onclick="toggleSubmenu(event,'sm-dokstrat')">Dokumen Strategis <span class="submenu-caret">&#8250;</span></a>
-            <div class="submenu">
-              <a href="publikasi-dokumen-strategis.html#rba">Rencana Bisnis &amp; Anggaran</a>
-              <a href="publikasi-dokumen-strategis.html#renstra">Rencana Strategis</a>
-              <a href="publikasi-dokumen-strategis.html#laporan-kinerja">Laporan Kinerja</a>
-              <a href="publikasi-dokumen-strategis.html#perjanjian-kinerja">Perjanjian Kinerja</a>
-              <a href="publikasi-dokumen-strategis.html#laporan-kegiatan">Laporan Kegiatan</a>
-            </div>
+        <a href="index.html">BERANDA</a>
+        <div class="has-dropdown" id="dd-tentang">
+          <a onclick="toggleDropdown('dd-tentang')">TENTANG KAMI <span class="caret">&#9662;</span></a>
+          <div class="dropdown">
+            <a href="tentang-kami.html#sejarah">Sejarah</a>
+            <a href="tentang-kami.html#visimisi">Visi Misi</a>
+            <a href="tentang-kami.html#struktur">Struktur Organisasi</a>
+            <a href="tentang-kami.html#inovasi">Inovasi</a>
           </div>
-          <a href="publikasi-digital-library.html">Digital Library</a>
-          <a href="publikasi-galeri.html">Galeri</a>
-          <a href="publikasi-daftar-informasi-publik.html">Daftar Informasi Publik</a>
         </div>
-      </div>
-      <a href="kontak.html">KONTAK</a>
+        <a href="layanan.html" class="active">LAYANAN</a>
+        <div class="has-dropdown" id="dd-publikasi">
+          <a onclick="toggleDropdown('dd-publikasi')">PUBLIKASI <span class="caret">&#9662;</span></a>
+          <div class="dropdown">
+            <a href="publikasi-pengumuman.html">Pengumuman</a>
+            <a href="publikasi-siaran-pers.html">Siaran Pers</a>
+            <a href="publikasi-jurnal-ilmiah.html">Jurnal Ilmiah</a>
+            <div class="has-submenu" id="sm-dokstrat">
+              <a onclick="toggleSubmenu(event,'sm-dokstrat')">Dokumen Strategis <span class="submenu-caret">&#8250;</span></a>
+              <div class="submenu">
+                <a href="publikasi-dokumen-strategis.html#rba">Rencana Bisnis &amp; Anggaran</a>
+                <a href="publikasi-dokumen-strategis.html#renstra">Rencana Strategis</a>
+                <a href="publikasi-dokumen-strategis.html#laporan-kinerja">Laporan Kinerja</a>
+                <a href="publikasi-dokumen-strategis.html#perjanjian-kinerja">Perjanjian Kinerja</a>
+                <a href="publikasi-dokumen-strategis.html#laporan-kegiatan">Laporan Kegiatan</a>
+              </div>
+            </div>
+            <a href="publikasi-digital-library.html">Digital Library</a>
+            <a href="publikasi-galeri.html">Galeri</a>
+            <a href="publikasi-daftar-informasi-publik.html">Daftar Informasi Publik</a>
+          </div>
+        </div>
+        <a href="kontak.html">KONTAK</a>
       </nav>
     </div>
   </header>
 
-  <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="layanan.html">Layanan</a><span>/</span>Eksplorasi Migas</div>
+  <div class="breadcrumb"><a href="index.html">Beranda</a><span>/</span><a href="layanan.html">Layanan</a><span>/</span>Kalibrasi</div>
   <section>
     <div class="detail-wrap">
 
@@ -65,7 +72,7 @@
         <div class="photo"></div>
         <div class="photo center">
           <div class="detail-hero-title-overlay">
-            <h1>Eksplorasi Migas</h1>
+            <h1>Kalibrasi</h1>
           </div>
         </div>
         <div class="photo"></div>
@@ -73,20 +80,29 @@
 
       <div class="detail-columns">
         <div>
-         <p class="lead">Mendukung penemuan cadangan minyak dan gas bumi baru, baik secara konvensional maupun non-konvensional.</p>
+          <p class="lead">Kalibrasi dan perawatan peralatan laboratorium untuk menjamin akurasi hasil pengujian.</p>
         </div>
         <div class="detail-sidebar">
-          <h4>Profil Divisi Eksplorasi Migas</h4>
+          <h4>Profil Divisi Kalibrasi</h4>
           <div class="sidebar-contact-row"><span>&#128100;</span> Kontak Bisnis: Nama PIC</div>
           <div class="sidebar-contact-row"><span>&#128222;</span> 0812-0000-0000</div>
-          <div class="sidebar-contact-row"><span>&#9993;&#65039;</span> eksplorasi@esdm.go.id</div>
+          <div class="sidebar-contact-row"><span>&#9993;&#65039;</span> kalibrasi@esdm.go.id</div>
         </div>
       </div>
 
-      
-
       <div class="related-accordion">
         <h3>Layanan Lainnya</h3>
+
+        <div class="accordion-row">
+          <div class="accordion-header" onclick="toggleAccordionRow(this)">
+            <div class="ah-left"><span class="ah-icon">&#128269;</span><span class="ah-label">Eksplorasi Migas</span></div>
+            <span class="accordion-chevron">&#9662;</span>
+          </div>
+          <div class="accordion-body">
+            <p>Mendukung penemuan cadangan migas baru.</p>
+            <a href="layanan-eksplorasi.html" class="card-cta">Lihat Detail &rarr;</a>
+          </div>
+        </div>
 
         <div class="accordion-row">
           <div class="accordion-header" onclick="toggleAccordionRow(this)">
@@ -145,17 +161,6 @@
 
         <div class="accordion-row">
           <div class="accordion-header" onclick="toggleAccordionRow(this)">
-            <div class="ah-left"><span class="ah-icon">&#9878;&#65039;</span><span class="ah-label">Kalibrasi</span></div>
-            <span class="accordion-chevron">&#9662;</span>
-          </div>
-          <div class="accordion-body">
-            <p>Kalibrasi dan perawatan peralatan laboratorium.</p>
-            <a href="layanan-kalibrasi.html" class="card-cta">Lihat Detail &rarr;</a>
-          </div>
-        </div>
-
-        <div class="accordion-row">
-          <div class="accordion-header" onclick="toggleAccordionRow(this)">
             <div class="ah-left"><span class="ah-icon">&#129514;</span><span class="ah-label">Uji Profisiensi</span></div>
             <span class="accordion-chevron">&#9662;</span>
           </div>
@@ -186,15 +191,14 @@
             <a href="layanan-lainnya.html" class="card-cta">Lihat Detail &rarr;</a>
           </div>
         </div>
-<div class="detail-cta">
-        <p>Tertarik menggunakan layanan Eksplorasi Migas?</p>
-        <a href="kontak.html" class="btn btn-secondary">Ajukan Layanan Ini</a>
-      </div>
+
+        <div class="detail-cta">
+          <p>Tertarik menggunakan layanan Kalibrasi?</p>
+          <a href="kontak.html" class="btn btn-secondary">Ajukan Layanan Ini</a>
+        </div>
       </div>
     </div>
   </section>
-
-
 
   <!-- FOOTER -->
   <footer>

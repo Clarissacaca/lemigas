@@ -34,6 +34,14 @@ function toggleSubmenu(event, id) {
   if (!wasOpen) el.classList.add('open');
 }
 
+// Buka/tutup menu mobile (hamburger)
+function toggleMobileNav() {
+  var navPill = document.querySelector('.nav-pill');
+  var overlay = document.querySelector('.nav-overlay');
+  navPill.classList.toggle('mobile-open');
+  overlay.classList.toggle('active');
+}
+
 // Tutup dropdown & submenu kalau klik di luar area menu
 document.addEventListener('click', function (e) {
   if (!e.target.closest('.has-dropdown')) {
@@ -47,11 +55,6 @@ document.addEventListener('click', function (e) {
     });
   }
 });
-
-// Contoh aksi tombol cari (silakan diganti dengan fitur pencarian asli)
-function handleSearch() {
-  alert('Fitur pencarian masih contoh ya');
-}
 
 // Contoh submit form kontak (masih demo, belum terhubung ke server/email)
 function handleContactSubmit(event) {
@@ -105,7 +108,7 @@ window.addEventListener('DOMContentLoaded', startCountingAnimation);
 
 // Galeri: kombinasi filter kategori + pagination
 var galleryState = { category: 'semua', page: '1' };
- 
+
 function filterGallery(btn, category) {
   galleryState.category = category;
   document.querySelectorAll('.gallery-filters button').forEach(function (b) {
@@ -114,7 +117,7 @@ function filterGallery(btn, category) {
   btn.classList.add('active');
   updateGalleryView();
 }
- 
+
 function goToGalleryPage(btn, page) {
   galleryState.page = String(page);
   document.querySelectorAll('.gallery-pagination button[data-page]').forEach(function (b) {
@@ -124,7 +127,7 @@ function goToGalleryPage(btn, page) {
   updateGalleryView();
   window.scrollTo({ top: document.querySelector('.gallery-grid-pro').offsetTop - 150, behavior: 'smooth' });
 }
- 
+
 function goToGalleryPageDelta(delta) {
   var current = parseInt(galleryState.page, 10);
   var buttons = document.querySelectorAll('.gallery-pagination button[data-page]');
@@ -134,7 +137,7 @@ function goToGalleryPageDelta(delta) {
   var targetBtn = document.querySelector('.gallery-pagination button[data-page="' + next + '"]');
   if (targetBtn) goToGalleryPage(targetBtn, next);
 }
- 
+
 function updateGalleryView() {
   document.querySelectorAll('.gallery-tile').forEach(function (tile) {
     var matchCategory = galleryState.category === 'semua' || tile.getAttribute('data-category') === galleryState.category;
@@ -142,4 +145,112 @@ function updateGalleryView() {
     tile.style.display = (matchCategory && matchPage) ? '' : 'none';
   });
 }
- 
+
+/* ===== SEARCH ===== */
+// Daftar halaman yang bisa dicari. Tambah baris baru kalau ada halaman baru.
+// "kw" = kata kunci tambahan supaya halaman bisa ditemukan dengan kata lain.
+var SEARCH_INDEX = [
+  { title: 'Beranda', desc: 'Halaman utama', url: 'index.html', kw: 'home utama lemigas balai besar pengujian' },
+  { title: 'Sejarah', desc: 'Tentang Kami', url: 'tentang-kami.html#sejarah', kw: 'tentang kami profil history' },
+  { title: 'Visi Misi', desc: 'Tentang Kami', url: 'tentang-kami.html#visimisi', kw: 'visi misi tujuan' },
+  { title: 'Struktur Organisasi', desc: 'Tentang Kami', url: 'tentang-kami.html#struktur', kw: 'struktur organisasi pimpinan' },
+  { title: 'Inovasi', desc: 'Tentang Kami', url: 'tentang-kami.html#inovasi', kw: 'inovasi penelitian' },
+  { title: 'Layanan', desc: 'Pengujian, studi, tenaga ahli, laboratorium', url: 'layanan.html', kw: 'pengujian studi tenaga ahli laboratorium sertifikasi blending eksplorasi minyak gas bumi' },
+  { title: 'Pengumuman', desc: 'Publikasi', url: 'publikasi-pengumuman.html', kw: 'publikasi pengumuman' },
+  { title: 'Siaran Pers', desc: 'Publikasi', url: 'publikasi-siaran-pers.html', kw: 'publikasi berita press release' },
+  { title: 'Jurnal Ilmiah', desc: 'Publikasi', url: 'publikasi-jurnal-ilmiah.html', kw: 'publikasi jurnal ilmiah penelitian' },
+  { title: 'Rencana Bisnis & Anggaran', desc: 'Dokumen Strategis', url: 'publikasi-dokumen-strategis.html#rba', kw: 'rba dokumen strategis' },
+  { title: 'Rencana Strategis', desc: 'Dokumen Strategis', url: 'publikasi-dokumen-strategis.html#renstra', kw: 'renstra dokumen strategis' },
+  { title: 'Laporan Kinerja', desc: 'Dokumen Strategis', url: 'publikasi-dokumen-strategis.html#laporan-kinerja', kw: 'lakin dokumen strategis' },
+  { title: 'Perjanjian Kinerja', desc: 'Dokumen Strategis', url: 'publikasi-dokumen-strategis.html#perjanjian-kinerja', kw: 'perkin dokumen strategis' },
+  { title: 'Laporan Kegiatan', desc: 'Dokumen Strategis', url: 'publikasi-dokumen-strategis.html#laporan-kegiatan', kw: 'dokumen strategis kegiatan' },
+  { title: 'Digital Library', desc: 'Publikasi', url: 'publikasi-digital-library.html', kw: 'perpustakaan buku library' },
+  { title: 'Galeri', desc: 'Publikasi', url: 'publikasi-galeri.html', kw: 'foto video dokumentasi' },
+  { title: 'Daftar Informasi Publik', desc: 'Publikasi', url: 'publikasi-daftar-informasi-publik.html', kw: 'dip informasi publik ppid' },
+  { title: 'Kontak', desc: 'Alamat, telepon, email', url: 'kontak.html', kw: 'hubungi alamat telepon email lokasi' }
+];
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box = document.querySelector('.search-box');
+  if (!box) return;
+  var input = box.querySelector('input');
+  var btn = box.querySelector('button');
+
+  var results = document.createElement('div');
+  results.className = 'search-results';
+  box.appendChild(results);
+
+  var isMobile = function () { return window.matchMedia('(max-width: 900px)').matches; };
+  var items = [];
+  var active = -1;
+
+  function runSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { results.classList.remove('show'); items = []; return; }
+    var words = q.split(/\s+/);
+    items = SEARCH_INDEX.filter(function (p) {
+      var hay = (p.title + ' ' + p.desc + ' ' + p.kw).toLowerCase();
+      return words.every(function (w) { return hay.indexOf(w) !== -1; });
+    });
+    active = -1;
+    results.innerHTML = items.length
+      ? items.map(function (p) {
+          return '<a href="' + p.url + '">' + p.title + '<small>' + p.desc + '</small></a>';
+        }).join('')
+      : '<div class="no-result">Tidak ada hasil ditemukan.</div>';
+    results.classList.add('show');
+  }
+
+  function setActive(i) {
+    var links = results.querySelectorAll('a');
+    links.forEach(function (l) { l.classList.remove('focus'); });
+    if (links[i]) {
+      links[i].classList.add('focus');
+      links[i].scrollIntoView({ block: 'nearest' });
+    }
+    active = i;
+  }
+
+  function closeAll() {
+    results.classList.remove('show');
+    box.classList.remove('expanded');
+  }
+
+  function go() {
+    var target = items[active >= 0 ? active : 0];
+    if (target) window.location.href = target.url;
+  }
+
+  input.addEventListener('input', function () { runSearch(input.value); });
+  input.addEventListener('focus', function () { if (input.value) runSearch(input.value); });
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(active + 1, items.length - 1)); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(active - 1, 0)); }
+    else if (e.key === 'Escape') { closeAll(); input.blur(); }
+    else if (e.key === 'Enter') { e.preventDefault(); go(); }
+  });
+
+  btn.addEventListener('click', function () {
+    // Mobile: klik pertama membuka kolom search
+    if (isMobile() && !box.classList.contains('expanded')) {
+      box.classList.add('expanded');
+      input.focus();
+      return;
+    }
+    if (!input.value.trim()) {
+      if (isMobile()) closeAll(); else input.focus();
+      return;
+    }
+    if (items.length) go(); else runSearch(input.value);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!box.contains(e.target)) closeAll();
+  });
+});
+// Accordion "Layanan Lainnya"
+function toggleAccordionRow(header) {
+  var row = header.parentElement;
+  row.classList.toggle('open');
+}

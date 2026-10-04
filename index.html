@@ -15,11 +15,18 @@
   <img src="logo-lemigas.png" alt="Logo Kementerian ESDM & LEMIGAS" class="brand-logo-img">
 </div>
       <div class="search-box">
-        <input type="text" placeholder="Cari...">
-        <button aria-label="Cari" onclick="handleSearch()">&#128269;</button>
-      </div>
+  <input type="text" placeholder="Cari..." autocomplete="off">
+  <button type="button" aria-label="Cari">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+</div>
     </div>
     <div class="nav-row nav-row-transparent">
+      <button class="nav-toggle-btn" onclick="toggleMobileNav()">&#9776;</button>
+      <div class="nav-overlay" onclick="toggleMobileNav()"></div>
       <nav class="nav-pill">
         <a href="#beranda" class="active">BERANDA</a>
         <div class="has-dropdown" id="dd-tentang">
@@ -31,7 +38,7 @@
             <a href="tentang-kami.html#inovasi">Inovasi</a>
           </div>
         </div>
-                  <a href="layanan.html">LAYANAN</a>
+        <a href="layanan.html">LAYANAN</a>
         <div class="has-dropdown" id="dd-publikasi">
           <a onclick="toggleDropdown('dd-publikasi')">PUBLIKASI <span class="caret">&#9662;</span></a>
           <div class="dropdown">
@@ -59,34 +66,34 @@
   </header>
 
   <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <div class="hero-bg-slide active" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80')"></div>
-    <div class="hero-bg-slide" style="background-image:url('back1.png')"></div>
-    <div class="hero-bg-slide" style="background-image:url('back2.png')"></div>
-    <div class="hero-bg-slide" style="background-image:url('back3.png')"></div>
-    <div class="hero-bg-slide"></div>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>BALAI BESAR PENGUJIAN MINYAK<br>DAN GAS BUMI LEMIGAS</h1>
-    <p class="subtitle">Mitra terbaik anda dalam bidang pengujian minyak dan gas bumi</p>
-    <div class="hero-buttons">
-      <a href="layanan.html" class="btn btn-primary">AJUKAN LAYANAN</a>
-      <a href="kontak.html" class="btn btn-secondary">KONTAK</a>
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-slide active" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80')"></div>
+      <div class="hero-bg-slide" style="background-image:url('back1.png')"></div>
+      <div class="hero-bg-slide" style="background-image:url('back2.png')"></div>
+      <div class="hero-bg-slide" style="background-image:url('back3.png')"></div>
+      <div class="hero-bg-slide"></div>
     </div>
-  </div>
-</section>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>BALAI BESAR PENGUJIAN MINYAK<br>DAN GAS BUMI LEMIGAS</h1>
+      <p class="subtitle">Mitra terbaik anda dalam bidang pengujian minyak dan gas bumi</p>
+      <div class="hero-buttons">
+        <a href="layanan.html" class="btn btn-primary">AJUKAN LAYANAN</a>
+        <a href="kontak.html" class="btn btn-secondary">KONTAK</a>
+      </div>
+    </div>
+  </section>
 
   <!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="num" data-target="47">0</div><div class="label">Laboratorium</div></div>
-  <div class="stat"><div class="num" data-target="1560">0</div><div class="label">Peralatan Pengujian</div></div>
-  <div class="stat"><div class="num" data-target="600">0</div><div class="label">Pelanggan</div></div>
-  <div class="stat"><div class="num" data-target="1000">0</div><div class="label">Pengujian per Tahun</div></div>
-</div>
+  <div class="stats">
+    <div class="stat"><div class="num" data-target="47">0</div><div class="label">Laboratorium</div></div>
+    <div class="stat"><div class="num" data-target="1560">0</div><div class="label">Peralatan Pengujian</div></div>
+    <div class="stat"><div class="num" data-target="600">0</div><div class="label">Pelanggan</div></div>
+    <div class="stat"><div class="num" data-target="1000">0</div><div class="label">Pengujian per Tahun</div></div>
+  </div>
 
-    <!-- VIDEO INTRO -->
+  <!-- VIDEO INTRO -->
   <section class="intro-split">
     <div class="intro-text">
       <h2>BALAI BESAR PENGUJIAN MINYAK DAN GAS BUMI LEMIGAS</h2>
@@ -124,13 +131,6 @@
         <p>Laboratorium bersertifikasi ISO dan TUV dengan standar internasional.</p>
         <a href="layanan.html" class="card-cta">Lihat Detail &rarr;</a>
       </div>
-    </div>
-  </section>
-
-    <!-- LAYANAN -->
-  <section id="layanan">
-    <div class="layanan-grid">
-      <!-- 4 card sama seperti sebelumnya, tidak berubah -->
     </div>
     <div class="info-box">
       <h2>Layanan yang disediakan oleh LEMIGAS</h2>
