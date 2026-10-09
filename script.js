@@ -1,3 +1,78 @@
+// ==========================================================
+//  DATA BERITA (satu sumber untuk semua halaman, ada di script.js)
+//  - Slider "Info Terkini" di beranda (maksimal 5 berita terbaru)
+//  - Kartu berita di halaman Siaran Pers (semua berita)
+//  - Halaman detail berita (berita-detail.html?id=...)
+//
+//  Cara menambah berita: salin satu blok { ... }, tempel PALING ATAS
+//  (berita terbaru di urutan pertama), lalu isi datanya.
+//  id      : angka/kata unik, TIDAK boleh sama dengan berita lain
+//  gambar  : nama file foto (taruh satu folder dengan index.html)
+//  isi     : daftar paragraf. 1 teks dalam tanda kutip = 1 paragraf
+// ==========================================================
+window.BERITA = [
+  {
+    id: '1',
+    tanggal: '26 Agustus 2026',
+    judul: 'LEMIGAS Dorong Penguatan Monitoring dan Integritas Lokasi Penyimpanan CCS',
+    gambar: 'berita1.jpg',
+    isi: [
+      '[Paragraf 1: isi berita pertama. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita. Tambah atau hapus paragraf sesuai kebutuhan.]'
+    ]
+  },
+  {
+    id: '2',
+    tanggal: '19 Agustus 2026',
+    judul: 'LEMIGAS dan PPSDM Migas Perkuat Sinergi Pengujian dan Pengembangan SDM',
+    gambar: 'berita2.jpg',
+    isi: [
+      '[Paragraf 1: isi berita kedua. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita.]'
+    ]
+  },
+  {
+    id: '3',
+    tanggal: '17 Agustus 2026',
+    judul: 'Semarak Rangkaian Upacara HUT Ke-81 RI di LEMIGAS dan Ditjen Migas',
+    gambar: 'berita3.jpg',
+    isi: [
+      '[Paragraf 1: isi berita ketiga. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita.]'
+    ]
+  },
+  {
+    id: '4',
+    tanggal: '[Tanggal]',
+    judul: '[Judul berita 4]',
+    gambar: 'berita4.jpg',
+    isi: [
+      '[Paragraf 1: isi berita keempat. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita.]'
+    ]
+  },
+  {
+    id: '5',
+    tanggal: '[Tanggal]',
+    judul: '[Judul berita 5]',
+    gambar: 'berita5.jpg',
+    isi: [
+      '[Paragraf 1: isi berita kelima. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita.]'
+    ]
+  },
+  {
+    id: '6',
+    tanggal: '[Tanggal]',
+    judul: '[Judul berita 6]',
+    gambar: 'berita6.jpg',
+    isi: [
+      '[Paragraf 1: isi berita keenam. Ganti teks ini.]',
+      '[Paragraf 2: lanjutan isi berita.]'
+    ]
+  }
+];
+
 // Ukur tinggi header (topbar + navbar) supaya hero bisa menyesuaikan (biar nav-nya
 // kelihatan "melayang" di atas foto tapi tetap sticky pas discroll)
 function setHeaderHeightVar() {
@@ -254,3 +329,255 @@ function toggleAccordionRow(header) {
   var row = header.parentElement;
   row.classList.toggle('open');
 }
+
+/* ===== LINK DETAIL BERITA ===== */
+function beritaUrl(b) {
+  return 'publikasi-siaran-pers.html?id=' + encodeURIComponent(b.id);
+}
+
+/* ===== SLIDER BERITA (Info Terkini di beranda) ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  var slider = document.getElementById('it-slider');
+  if (!slider) return;
+  var track = slider.querySelector('.it-track');
+
+  // Isi slide dari berita-data.js (maksimal 5 berita terbaru)
+  var list = (window.BERITA || []).slice(0, 5);
+  if (list.length) track.innerHTML = '';
+  list.forEach(function (b) {
+    var a = document.createElement('a');
+    a.className = 'it-slide';
+    a.href = beritaUrl(b);
+    if (b.gambar) {
+      a.style.backgroundImage = "url('" + b.gambar + "'), linear-gradient(135deg, var(--navy), var(--navy-dark))";
+    }
+    var cap = document.createElement('div');
+    cap.className = 'it-caption';
+    var d = document.createElement('span');
+    d.className = 'it-cap-date';
+    d.textContent = b.tanggal;
+    var h = document.createElement('h4');
+    h.textContent = b.judul;
+    cap.appendChild(d);
+    cap.appendChild(h);
+    a.appendChild(cap);
+    track.appendChild(a);
+  });
+
+  var slides = slider.querySelectorAll('.it-slide');
+  var dotsWrap = slider.querySelector('.it-dots');
+  var n = slides.length, idx = 0, timer = null, ticking = false;
+
+  var dots = [];
+  for (var i = 0; i < n; i++) {
+    (function (i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'it-dot';
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      b.addEventListener('click', function () { goTo(i); restart(); });
+      dotsWrap.appendChild(b);
+      dots.push(b);
+    })(i);
+  }
+
+  function mark(i) {
+    idx = i;
+    for (var k = 0; k < n; k++) dots[k].classList.toggle('active', k === i);
+  }
+  function goTo(i) {
+    i = (i + n) % n;
+    track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+    mark(i);
+  }
+  track.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      mark(Math.round(track.scrollLeft / track.clientWidth));
+      ticking = false;
+    });
+  });
+  slider.querySelector('.it-prev').addEventListener('click', function () { goTo(idx - 1); restart(); });
+  slider.querySelector('.it-next').addEventListener('click', function () { goTo(idx + 1); restart(); });
+
+  function start() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stop();
+    timer = setInterval(function () { goTo(idx + 1); }, 5000);
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function restart() { start(); }
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+  slider.addEventListener('touchstart', stop, { passive: true });
+  slider.addEventListener('touchend', start, { passive: true });
+  window.addEventListener('resize', function () { track.scrollLeft = idx * track.clientWidth; });
+
+  if (n < 2) {
+    slider.querySelector('.it-prev').style.display = 'none';
+    slider.querySelector('.it-next').style.display = 'none';
+    dotsWrap.style.display = 'none';
+    return;
+  }
+  mark(0);
+  start();
+});
+
+/* ===== KARTU BERITA (halaman Siaran Pers) ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  var grid = document.getElementById('berita-grid');
+  if (!grid || !window.BERITA) return;
+  window.BERITA.forEach(function (b) {
+    var card = document.createElement('div');
+    card.className = 'berita-card';
+    var thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    if (b.gambar) {
+      thumb.style.backgroundImage = "url('" + b.gambar + "'), linear-gradient(135deg, var(--navy), var(--navy-dark))";
+    }
+    var body = document.createElement('div');
+    body.className = 'body';
+    var d = document.createElement('div');
+    d.className = 'date';
+    d.textContent = b.tanggal;
+    var h = document.createElement('h4');
+    h.textContent = b.judul;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn-secondary bd-detail-btn';
+    btn.textContent = 'Detail Berita \u203A';
+    btn.addEventListener('click', function () {
+      if (window.openBerita) window.openBerita(b.id);
+    });
+    body.appendChild(d);
+    body.appendChild(h);
+    body.appendChild(btn);
+    card.appendChild(thumb);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+});
+
+
+/* ===== POPUP DETAIL BERITA (di halaman Siaran Pers) ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  var grid = document.getElementById('berita-grid');
+  if (!grid || !window.BERITA) return;
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  function bg(url) {
+    return "url('" + url + "'), linear-gradient(135deg, var(--navy), var(--navy-dark))";
+  }
+  var calendarSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>';
+
+  // Kerangka popup
+  var modal = el('div', 'bd-modal');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.innerHTML =
+    '<div class="bd-backdrop" data-close="1"></div>' +
+    '<div class="bd-dialog" role="dialog" aria-modal="true" aria-label="Detail berita">' +
+      '<button type="button" class="bd-close" data-close="1" aria-label="Tutup">&times;</button>' +
+      '<div class="bd-scroll">' +
+        '<div class="bd-layout">' +
+          '<article id="bd-article"></article>' +
+          '<aside class="bd-side"><div class="bd-side-card">' +
+            '<h3 class="bd-side-title">Berita Lainnya</h3><ul id="bd-others"></ul>' +
+          '</div></aside>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(modal);
+
+  var article = modal.querySelector('#bd-article');
+  var others = modal.querySelector('#bd-others');
+  var scroller = modal.querySelector('.bd-scroll');
+  var closeBtn = modal.querySelector('.bd-close');
+
+  function find(id) {
+    var r = null;
+    window.BERITA.forEach(function (b) { if (String(b.id) === String(id)) r = b; });
+    return r;
+  }
+
+  function render(b) {
+    article.innerHTML = '';
+    article.appendChild(el('h1', 'bd-title', b.judul));
+    var meta = el('div', 'bd-date');
+    meta.innerHTML = calendarSvg;
+    meta.appendChild(el('span', '', b.tanggal));
+    article.appendChild(meta);
+    if (b.gambar) {
+      var photo = el('div', 'bd-photo');
+      photo.style.backgroundImage = bg(b.gambar);
+      photo.setAttribute('role', 'img');
+      photo.setAttribute('aria-label', b.judul);
+      article.appendChild(photo);
+    }
+    var body = el('div', 'bd-body');
+    (b.isi || []).forEach(function (p) { body.appendChild(el('p', '', p)); });
+    article.appendChild(body);
+
+    others.innerHTML = '';
+    window.BERITA.filter(function (x) { return x !== b; }).slice(0, 5).forEach(function (x) {
+      var li = el('li');
+      var a = el('a', 'bd-other');
+      a.href = beritaUrl(x);
+      a.addEventListener('click', function (e) { e.preventDefault(); window.openBerita(x.id); });
+      var th = el('div', 'bd-other-thumb');
+      if (x.gambar) th.style.backgroundImage = bg(x.gambar);
+      var tx = el('div', 'bd-other-text');
+      var d = el('span', 'bd-other-date');
+      d.innerHTML = calendarSvg;
+      d.appendChild(el('span', '', x.tanggal));
+      tx.appendChild(d);
+      tx.appendChild(el('h4', '', x.judul));
+      a.appendChild(th);
+      a.appendChild(tx);
+      li.appendChild(a);
+      others.appendChild(li);
+    });
+    modal.querySelector('.bd-side').style.display = others.children.length ? '' : 'none';
+    scroller.scrollTop = 0;
+  }
+
+  window.openBerita = function (id) {
+    var b = find(id);
+    if (!b) return;
+    render(b);
+    document.title = b.judul + ' - LEMIGAS';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (window.history && history.replaceState) {
+      history.replaceState(null, '', '?id=' + encodeURIComponent(b.id));
+    }
+    closeBtn.focus();
+  };
+
+  function closeBerita() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.title = 'Siaran Pers - LEMIGAS';
+    if (window.history && history.replaceState) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  modal.addEventListener('click', function (e) {
+    if (e.target.getAttribute && e.target.getAttribute('data-close')) closeBerita();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeBerita();
+  });
+
+  // Dibuka dari slider beranda: publikasi-siaran-pers.html?id=...
+  var startId = new URLSearchParams(window.location.search).get('id');
+  if (startId) window.openBerita(startId);
+});

@@ -516,3 +516,122 @@ section.siaran .berita-grid { max-width: none; width: 100%; margin: 20px 0 0; }
 @media (max-width: 900px) {
   section.siaran { padding: 40px 6%; }
 }
+
+/* ===== INFO TERKINI (berita, pengumuman, update di beranda) ===== */
+.info-terkini .eyebrow-title,
+#layanan .eyebrow-title { text-align: left; margin: 0 0 30px; max-width: none; }
+.info-terkini .eyebrow-title h2,
+#layanan .eyebrow-title h2 { position: relative; padding-bottom: 14px; }
+.info-terkini .eyebrow-title h2::after,
+#layanan .eyebrow-title h2::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 76px; height: 4px; background: var(--yellow);
+}
+.it-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 26px; align-items: stretch; }
+.it-grid > div:first-child { display: flex; flex-direction: column; }
+.it-btn { margin-top: 26px; }
+.it-side { display: flex; flex-direction: column; gap: 22px; }
+.it-side .it-panel { flex: 1; display: flex; flex-direction: column; }
+.it-panel h3 { align-self: flex-start; }
+.it-panel-btn { align-self: flex-start; }
+.it-panel ul { margin-bottom: 20px; }
+.it-panel ul:last-child { margin-bottom: 0; }
+.it-panel h3.it-sub { margin-top: 34px; }
+.it-panel { background: var(--white); border: 1px solid #ececf3; border-radius: 16px; padding: 24px 22px; }
+.it-panel h3 { font-size: 17px; font-weight: 700; color: var(--navy-dark); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--yellow); display: inline-block; }
+.it-panel li { padding: 12px 0; border-bottom: 1px solid #ececf3; }
+.it-panel li:last-child { border-bottom: none; }
+.it-panel .it-date { display: block; font-size: 12px; color: var(--text-grey); margin-bottom: 4px; }
+.it-panel li a { font-size: 14px; font-weight: 700; color: var(--navy-dark); line-height: 1.4; text-decoration: none; }
+.it-panel li a:hover { color: var(--navy); text-decoration: underline; }
+.it-badge { display: inline-block; font-size: 10px; font-weight: 800; background: var(--yellow); color: var(--navy-dark); border-radius: 10px; padding: 2px 8px; margin-right: 6px; vertical-align: middle; }
+.it-link { display: inline-block; margin-top: 8px; }
+@media (max-width: 900px) {
+  .it-grid { grid-template-columns: 1fr; }
+  .it-panel { padding: 18px 16px; }
+}
+@media (max-width: 520px) {
+}
+
+/* --- Jarak Info Terkini ke Layanan dirapatkan --- */
+.info-terkini { padding-bottom: 10px; }
+#layanan { padding-top: 40px; }
+@media (max-width: 900px) {
+  .info-terkini { padding-bottom: 0; }
+  #layanan { padding-top: 28px; }
+}
+
+
+/* --- Slider berita (Info Terkini) --- */
+.it-slider { position: relative; display: flex; flex: 1; min-height: 420px; border-radius: 16px; overflow: hidden; border: 1px solid #ececf3; background: var(--navy-dark); }
+.it-track { display: flex; flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+.it-track::-webkit-scrollbar { display: none; }
+.it-slide { position: relative; flex: 0 0 100%; scroll-snap-align: start; text-decoration: none; color: var(--white);
+  background: linear-gradient(135deg, var(--navy), var(--navy-dark)); background-size: cover; background-position: center; display: block; }
+.it-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 28px 52px; background: rgba(15, 26, 74, 0.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.it-cap-date { display: block; font-size: 12px; font-weight: 700; color: var(--yellow); margin-bottom: 6px; letter-spacing: 0.3px; }
+.it-caption h4 { font-size: 20px; font-weight: 800; line-height: 1.35; color: var(--white); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.it-arrow { position: absolute; top: 40%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255, 255, 255, 0.85); color: var(--navy-dark); font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.it-arrow:hover { background: var(--yellow); }
+.it-prev { left: 14px; }
+.it-next { right: 14px; }
+.it-dots { position: absolute; left: 0; right: 0; bottom: 18px; display: flex; justify-content: center; gap: 8px; }
+.it-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: rgba(255, 255, 255, 0.55); cursor: pointer; transition: all 0.25s; }
+.it-dot.active { width: 22px; border-radius: 8px; background: var(--yellow); }
+@media (max-width: 900px) {
+  .it-slider { flex: none; min-height: 300px; }
+  .it-caption { padding: 16px 18px 44px; }
+  .it-caption h4 { font-size: 16px; }
+  .it-arrow { width: 32px; height: 32px; font-size: 20px; }
+}
+
+
+/* ===== KARTU BERITA SEBAGAI LINK ===== */
+a.berita-card { display: block; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+a.berita-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(26,42,108,0.12); }
+
+/* ===== POPUP DETAIL BERITA (halaman Siaran Pers) ===== */
+.bd-modal { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.bd-modal.open { display: flex; }
+.bd-backdrop { position: absolute; inset: 0; background: rgba(15, 26, 74, 0.65); }
+.bd-dialog { position: relative; background: var(--white); border-radius: 20px; width: 100%; max-width: 1100px; max-height: 92vh; display: flex; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+.bd-scroll { flex: 1; overflow-y: auto; padding: 36px 36px 40px; }
+.bd-close { position: absolute; top: 14px; right: 16px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: var(--yellow); color: var(--navy-dark); font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+.bd-close:hover { background: var(--yellow-dark); }
+.bd-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start; }
+.bd-title { font-size: 26px; font-weight: 800; line-height: 1.3; color: var(--navy-dark); margin: 0 40px 12px 0; }
+.bd-date { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text-grey); margin-bottom: 20px; }
+.bd-photo { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; background-size: cover; background-position: center; background-color: var(--navy-dark); margin-bottom: 26px; }
+.bd-body p { font-size: 15px; line-height: 1.85; color: var(--text-grey); margin-bottom: 16px; text-align: justify; }
+.bd-side { position: sticky; top: 0; }
+.bd-side-card { background: var(--white); border: 1px solid #ececf3; border-radius: 16px; padding: 22px 20px; }
+.bd-side-title { font-size: 15px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: var(--navy-dark); padding-bottom: 12px; margin-bottom: 6px; border-bottom: 3px solid var(--yellow); display: inline-block; }
+.bd-side-card li + li { border-top: 1px solid #ececf3; }
+.bd-other { display: flex; gap: 14px; padding: 14px 0; text-decoration: none; color: inherit; }
+.bd-other-thumb { flex: 0 0 96px; height: 72px; border-radius: 10px; background: linear-gradient(135deg, var(--navy), var(--navy-dark)); background-size: cover; background-position: center; }
+.bd-other-text { min-width: 0; }
+.bd-other-date { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-grey); margin-bottom: 4px; }
+.bd-other-date svg { width: 13px; height: 13px; }
+.bd-other h4 { font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--navy-dark); }
+.bd-other:hover h4 { color: var(--navy); text-decoration: underline; }
+@media (max-width: 900px) {
+  .bd-modal { padding: 0; align-items: stretch; }
+  .bd-dialog { border-radius: 0; max-height: none; height: 100%; }
+  .bd-scroll { padding: 56px 18px 28px; }
+  .bd-layout { grid-template-columns: 1fr; gap: 24px; }
+  .bd-title { font-size: 20px; margin-right: 0; }
+  .bd-body p { font-size: 14.5px; text-align: left; }
+  .bd-side { position: static; }
+}
+
+
+/* ===== TOMBOL "DETAIL BERITA" PADA KARTU (Siaran Pers) ===== */
+#berita-grid .berita-card { display: flex; flex-direction: column; }
+#berita-grid .berita-card .body { flex: 1; display: flex; flex-direction: column; }
+#berita-grid .berita-card h4 { margin-bottom: 16px; }
+.bd-detail-btn { margin-top: auto; align-self: center; }
+
+/* Kartu berita di Siaran Pers: lebar sejajar judul (hilangkan padding section bersarang) */
+.detail-wrap section#berita { padding: 0; }
+.detail-wrap #berita-grid { width: 100%; max-width: none; margin: 10px 0 0; }
